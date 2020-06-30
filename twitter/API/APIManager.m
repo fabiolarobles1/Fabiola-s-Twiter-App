@@ -7,7 +7,7 @@
 //
 
 #import "APIManager.h"
-#import "Tweets.h"
+#import "Tweet.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 static NSString * const consumerKey = @"hMC5qrZzQnSX8bFIvIBu5FoO6";// Enter your consumer key here
@@ -55,7 +55,7 @@ static NSString * const consumerSecret = @"4Y4bzA8oUVQICUBeV3Xbj9gQxzfIZhb605JJF
    parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
        
         //Success, create array of Tweets
-        NSMutableArray *tweets =[Tweets tweetsWithArray:tweetDictionaries];
+        NSMutableArray *tweets =[Tweet tweetsWithArray:tweetDictionaries];
         completion(tweets, nil);
                          
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

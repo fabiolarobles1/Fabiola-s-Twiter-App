@@ -6,10 +6,10 @@
 //  Copyright © 2020 Emerson Malca. All rights reserved.
 //
 
-#import "Tweets.h"
+#import "Tweet.h"
 #import "User.h"
 
-@implementation Tweets
+@implementation Tweet
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
@@ -30,6 +30,7 @@
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
+        
     
         //initialize user
         NSDictionary *user = dictionary[@"user"];
@@ -42,13 +43,15 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         
         //Configure the input format to parse the date string
-        formatter.dateFormat = @"E MM d HH:mm Z y";
+         // formatter.dateFormat = @"E MM d HH:mm Z y";
+        
+        formatter.dateFormat = @"E MMM dd HH:mm:ss Z y";
         
         //Convert string to date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
-        
+        NSLog(@"%@", date);
         //configure output format
-        formatter.dateStyle = NSDateFormatterNoStyle;
+        formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         
         //Convert Date to String
@@ -61,7 +64,7 @@
 + (NSMutableArray *)tweetsWithArray : (NSArray *) dictionaries{
     NSMutableArray *tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries){
-        Tweets *tweet = [[Tweets alloc] initWithDictionary:dictionary];
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
         [tweets addObject:tweet];
     }
     return tweets;
