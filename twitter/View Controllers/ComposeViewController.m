@@ -50,6 +50,7 @@
             
         }else{
             NSLog(@"Succesfully posted tweet.");
+            [self.delegate didTweet:tweet];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         
