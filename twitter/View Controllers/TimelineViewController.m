@@ -41,6 +41,7 @@
 }
 
 - (void) fetchTweets{
+    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
