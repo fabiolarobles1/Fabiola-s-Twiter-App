@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong)  UIRefreshControl *refreshControl;
 
 @end
 
@@ -26,12 +27,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self fetchTweets];
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     self.tableView.rowHeight = 125;
     
+    
+    
+}
+
+- (void) fetchTweets{
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -45,12 +54,14 @@
                 NSLog(@"Username is %@", user.screenName);
             }
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+            
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
     }];
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,11 +93,7 @@
     cell.favoriteCountLabel.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountLabel.text = [@(tweet.retweetCount) stringValue];
    
-    
-
     [cell.profilePictureView setImageWithURL:user.profilePicURL];
-    
-    
     
     return cell;
 }
