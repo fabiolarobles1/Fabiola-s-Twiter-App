@@ -69,7 +69,7 @@ BOOL *logged;
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [super viewWillAppear:YES];
     [self.tableView reloadData];
 }
 
@@ -84,7 +84,7 @@ BOOL *logged;
     cell.tweetTextLabel.text = tweet.text;
     cell.dateLabel.text = tweet.timeStamp;
     cell.nameLabel.text = user.name;
-    cell.usernameLabel.text = user.screenName;
+    cell.usernameLabel.text = [@"@" stringByAppendingString:user.screenName];
     cell.favoriteCountLabel.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountLabel.text = [@(tweet.retweetCount) stringValue];
     

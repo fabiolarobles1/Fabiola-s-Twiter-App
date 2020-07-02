@@ -30,7 +30,7 @@
     
     self.tweetTextLabel.text = self.tweet.text;
     self.nameLabel.text = self.tweet.user.name;
-    self.usernameLabel.text = self.tweet.user.screenName;
+    self.usernameLabel.text =  [@"@" stringByAppendingString:self.tweet.user.screenName];
     self.dateLabel.text = self.tweet.createdAtString;
     self.favoriteCountLabel.text = [@(self.tweet.favoriteCount) stringValue];
     self.retweetCountLabel.text = [@(self.tweet.retweetCount) stringValue];
