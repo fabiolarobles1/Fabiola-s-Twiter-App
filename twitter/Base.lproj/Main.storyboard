@@ -134,6 +134,10 @@
                                                     <rect key="frame" x="145" y="96" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Rep" image="retweet-icon"/>
+                                                    <state key="selected" image="retweet-icon-green"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="2VQ-2l-W6C" eventType="touchUpInside" id="DZL-dF-KhV"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAc-xy-UTe">
                                                     <rect key="frame" x="165" y="101" width="23" height="10"/>
@@ -146,6 +150,10 @@
                                                     <rect key="frame" x="200" y="96" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Rep" image="favor-icon"/>
+                                                    <state key="selected" image="favor-icon-red"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="2VQ-2l-W6C" eventType="touchUpInside" id="3Sn-6j-xgT"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eo2-VU-ogC">
                                                     <rect key="frame" x="220" y="101" width="26" height="10"/>
@@ -158,9 +166,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="ykw-Y4-K8L" id="hG2-ll-dJo"/>
+                                            <outlet property="favoriteButton" destination="xCo-mX-FOK" id="gBZ-6f-IjY"/>
                                             <outlet property="favoriteCountLabel" destination="Eo2-VU-ogC" id="glR-El-MDi"/>
                                             <outlet property="nameLabel" destination="Nul-0D-1ot" id="ViA-dA-9eo"/>
                                             <outlet property="profilePictureView" destination="5Hd-8R-spX" id="fbZ-n3-OpR"/>
+                                            <outlet property="retweetButton" destination="26W-m3-b7L" id="r3c-xi-pzY"/>
                                             <outlet property="retweetCountLabel" destination="rAc-xy-UTe" id="MRS-Rc-JIT"/>
                                             <outlet property="tweetTextLabel" destination="OV3-6U-GXu" id="ynJ-dl-zan"/>
                                             <outlet property="usernameLabel" destination="tVi-jz-Umi" id="2j7-6b-cT7"/>
@@ -270,7 +280,9 @@
         <image name="TwitterLogoBlue" width="133.33332824707031" height="133.33332824707031"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
 </document>

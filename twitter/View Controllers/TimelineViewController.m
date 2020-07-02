@@ -58,7 +58,7 @@
             }
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
-            
+            NSLog(@"GETTING NEW TWEETS");
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -92,6 +92,7 @@
     Tweet *tweet = self.tweets[indexPath.row];
     User *user = tweet.user;
     
+    cell.tweet = tweet;
     cell.tweetTextLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAtString;
     cell.nameLabel.text = user.name;
