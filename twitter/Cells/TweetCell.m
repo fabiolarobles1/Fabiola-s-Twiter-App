@@ -36,8 +36,8 @@
         }];
         
     }else{
-         self.tweet.favorited = NO;
-               self.tweet.favoriteCount -=1;
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount -=1;
         
         [[APIManager shared] unFavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -49,8 +49,8 @@
         }];
     }
     [self refreshData];
-
 }
+
 - (IBAction)didTapRetweet:(id)sender {
     if(self.tweet.retweeted == NO){
         self.tweet.retweeted = YES;
@@ -66,8 +66,8 @@
         }];
         
     }else{
-         self.tweet.retweeted = NO;
-               self.tweet.retweetCount -=1;
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -=1;
         
         [[APIManager shared] unRetweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             if(error){
@@ -79,7 +79,6 @@
         }];
     }
     [self refreshData];
-
 }
 
 -(void)refreshData {

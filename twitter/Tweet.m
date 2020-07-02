@@ -53,11 +53,11 @@
        
         //configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterNoStyle;
+        formatter.timeStyle = NSDateFormatterShortStyle;
         
         //Convert Date to String
-     //   self.createdAtString = [formatter stringFromDate:date];
-        self.createdAtString = date.shortTimeAgoSinceNow;
+        self.createdAtString = [formatter stringFromDate:date];
+        self.timeStamp = date.shortTimeAgoSinceNow;
         
     }
     return self;

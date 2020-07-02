@@ -16,6 +16,7 @@
 #import "ComposeViewController.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "TweetDetailsViewController.h"
 
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -67,22 +68,10 @@ BOOL *logged;
     // Dispose of any resources that can be recreated.
 }
 
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    //segue to compose tweet
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController *) navigationController.topViewController;
-    composeController.delegate = self;
-    
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
-
-
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -93,10 +82,9 @@ BOOL *logged;
     //adding all the tweet info to the cell
     cell.tweet = tweet;
     cell.tweetTextLabel.text = tweet.text;
-    cell.dateLabel.text = tweet.createdAtString;
+    cell.dateLabel.text = tweet.timeStamp;
     cell.nameLabel.text = user.name;
     cell.usernameLabel.text = user.screenName;
-    cell.dateLabel.text = tweet.createdAtString;
     cell.favoriteCountLabel.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountLabel.text = [@(tweet.retweetCount) stringValue];
     
@@ -112,6 +100,8 @@ BOOL *logged;
     //setting profile picture
     if(user.profilePicURL != nil)
         [cell.profilePictureView setImageWithURL:user.profilePicURL];
+    
+    
     
     return cell;
 }
@@ -131,16 +121,39 @@ BOOL *logged;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    
-//    [UIView animateWithDuration:.5 animations:^{
-//        self.tableView.alpha = 0.5;
-//        appDelegate.window.rootViewController = loginViewController;
-//    }];
+    appDelegate.window.alpha = 0;
     appDelegate.window.rootViewController = loginViewController;
     
-    NSLog(@"%d",[[APIManager shared] logout]);
+    [UIView animateWithDuration:3 animations:^{
+        appDelegate.window.alpha = 1;
+    }];
+    
+    [[APIManager shared] logout];
     
 }
 
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    //segue to compose tweet
+    if([[segue identifier] isEqualToString:@"toCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController *) navigationController.topViewController;
+        composeController.delegate = self;
+    }else if([[segue identifier] isEqualToString:@"toDetailsVC"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet = self.tweets[indexPath.row];
+        TweetDetailsViewController *detailViewController = [segue destinationViewController];
+        detailViewController.tweet = tweet;
+    
+    }
+    
+}
 
 @end
