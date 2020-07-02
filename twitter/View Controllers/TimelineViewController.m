@@ -136,9 +136,9 @@ BOOL *logged;
 //        self.tableView.alpha = 0.5;
 //        appDelegate.window.rootViewController = loginViewController;
 //    }];
-     appDelegate.window.rootViewController = loginViewController;
+    appDelegate.window.rootViewController = loginViewController;
     
-    [[APIManager shared] logout];
+    NSLog(@"%d",[[APIManager shared] logout]);
     
 }
 
