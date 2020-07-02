@@ -29,16 +29,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //calling  tweets
     [self fetchTweets];
+    
+    //setting pulll to refresh
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
     self.tableView.rowHeight = 125;
-    
-    
     
 }
 
@@ -78,6 +79,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    //segue to compose tweet
     UINavigationController *navigationController = [segue destinationViewController];
     ComposeViewController *composeController = (ComposeViewController *) navigationController.topViewController;
     composeController.delegate = self;
@@ -92,17 +94,28 @@
     Tweet *tweet = self.tweets[indexPath.row];
     User *user = tweet.user;
     
+    //adding all the tweet info to the cell
     cell.tweet = tweet;
     cell.tweetTextLabel.text = tweet.text;
     cell.dateLabel.text = tweet.createdAtString;
     cell.nameLabel.text = user.name;
     cell.usernameLabel.text = user.screenName;
     cell.dateLabel.text = tweet.createdAtString;
-    
     cell.favoriteCountLabel.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountLabel.text = [@(tweet.retweetCount) stringValue];
-   
-    [cell.profilePictureView setImageWithURL:user.profilePicURL];
+    
+    //if favorited show as already favorited
+    if(tweet.favorited == YES){
+        [cell.favoriteButton setSelected:YES];
+    }
+    //if retweeted show as already retweeted
+    if(tweet.retweeted == YES){
+        [cell.retweetButton setSelected:YES];
+    }
+    
+    //setting profile picture
+    if(user.profilePicURL != nil)
+        [cell.profilePictureView setImageWithURL:user.profilePicURL];
     
     return cell;
 }
