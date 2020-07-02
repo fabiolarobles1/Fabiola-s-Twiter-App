@@ -183,6 +183,11 @@
                         <viewLayoutGuide key="safeArea" id="ugE-Ul-H9I"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Vmk-cw-7ba">
+                            <connections>
+                                <action selector="didTapLogoutButton:" destination="Lbl-k5-U4i" id="iOt-iE-Vfs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="5IW-sJ-xKx">
                             <connections>
                                 <segue destination="E73-zz-5S9" kind="presentation" id="NQ8-XM-x83"/>
@@ -242,7 +247,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
-                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" id="FTQ-G1-N2b" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytz-Ev-cUB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -260,7 +265,7 @@
         <!--Navigation Controller-->
         <scene sceneID="z4W-fb-ZBR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E73-zz-5S9" sceneMemberID="viewController">
+                <navigationController id="E73-zz-5S9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dv3-bT-Xe6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>

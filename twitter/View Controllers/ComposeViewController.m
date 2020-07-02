@@ -34,6 +34,7 @@
         
         if(error != nil){
             NSLog(@"Error: %@", error.localizedDescription);
+            //alert for error
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error posting tweet" message:@"There appears to be an error with your tweet. Please, try again later." preferredStyle:(UIAlertControllerStyleAlert)];
             
             //creating OK action

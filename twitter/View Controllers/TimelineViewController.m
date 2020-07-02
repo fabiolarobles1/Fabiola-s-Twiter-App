@@ -14,6 +14,9 @@
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ComposeViewController.h"
+#import "LoginViewController.h"
+#import "AppDelegate.h"
+
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -21,10 +24,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)  UIRefreshControl *refreshControl;
 
-
 @end
 
 @implementation TimelineViewController
+BOOL *logged;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,16 +53,9 @@
         if (tweets) {
             self.tweets = [tweets mutableCopy];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (Tweet *tw in tweets) {
-                NSString *text = tw.text;
-                User *user = tw.user;
-                NSLog(@"Text is %@", text);
-                NSLog(@"Name is %@", user.name);
-                NSLog(@"Username is %@", user.screenName);
-            }
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
-            NSLog(@"GETTING NEW TWEETS");
+            
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -128,5 +124,23 @@
     [self.tweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
+
+- (IBAction)didTapLogoutButton:(id)sender {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+//    [UIView animateWithDuration:.5 animations:^{
+//        self.tableView.alpha = 0.5;
+//        appDelegate.window.rootViewController = loginViewController;
+//    }];
+     appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+    
+}
+
 
 @end
