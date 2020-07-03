@@ -28,7 +28,11 @@
 @end
 
 @implementation TimelineViewController
-BOOL *logged;
+
+- (void) viewWillAppear:(BOOL)animated{
+   // [super viewWillAppear:YES];
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,10 +72,7 @@ BOOL *logged;
     // Dispose of any resources that can be recreated.
 }
 
-- (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    [self.tableView reloadData];
-}
+
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -101,6 +102,8 @@ BOOL *logged;
     if(user.profilePicURL != nil)
         [cell.profilePictureView setImageWithURL:user.profilePicURL];
     
+    cell.retweetButton.selected = tweet.retweeted;
+    cell.favoriteButton.selected = tweet.favorited;
     
     
     return cell;
