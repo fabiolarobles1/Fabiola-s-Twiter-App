@@ -67,12 +67,11 @@
     }];
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -88,12 +87,14 @@
     cell.usernameLabel.text = [@"@" stringByAppendingString:user.screenName];
     cell.favoriteCountLabel.text = [@(tweet.favoriteCount) stringValue];
     cell.retweetCountLabel.text = [@(tweet.retweetCount) stringValue];
+    cell.retweetButton.selected = tweet.retweeted;
+    cell.favoriteButton.selected = tweet.favorited;
     
-    //if favorited show as already favorited
+    //if favorited show as already favorited at start
     if(tweet.favorited == YES){
         [cell.favoriteButton setSelected:YES];
     }
-    //if retweeted show as already retweeted
+    //if retweeted show as already retweeted ast start
     if(tweet.retweeted == YES){
         [cell.retweetButton setSelected:YES];
     }
@@ -102,8 +103,7 @@
     if(user.profilePicURL != nil)
         [cell.profilePictureView setImageWithURL:user.profilePicURL];
     
-    cell.retweetButton.selected = tweet.retweeted;
-    cell.favoriteButton.selected = tweet.favorited;
+    
     
     
     return cell;
