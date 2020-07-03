@@ -2,7 +2,7 @@
 
 **Fabiola's Twitter App** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **20** hours spent in total
+Time spent: **35** hours spent in total
 
 ## User Stories
 
@@ -53,7 +53,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/kQ2WZeldsD.gif' title='Launch, Login and pull to refresh' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/asr5WGKKJc.gif' title='Scroll, Un/retweet, Un/favorite and details view' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/7F5DT2JKqQ.gif' title='Landscape, small phone, compose tweet' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/q3FcylvKx0.gif' title='Logged out' width='' alt='Video Walkthrough' />
 
 GIF created with [Recordit](https://recordit.co/).
 
