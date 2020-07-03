@@ -399,9 +399,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Q1-eU-JTa">
-                                <rect key="frame" x="0.0" y="88" width="375" height="208"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Q1-eU-JTa">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -409,6 +408,12 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Q1-eU-JTa" firstAttribute="leading" secondItem="qxc-sV-w3F" secondAttribute="leading" id="8sB-vv-NyU"/>
+                            <constraint firstAttribute="bottom" secondItem="6Q1-eU-JTa" secondAttribute="bottom" id="Ayl-hy-XEf"/>
+                            <constraint firstItem="6Q1-eU-JTa" firstAttribute="top" secondItem="kf7-zk-Squ" secondAttribute="top" id="sKY-En-VuG"/>
+                            <constraint firstAttribute="trailing" secondItem="6Q1-eU-JTa" secondAttribute="trailing" id="xRz-sS-AMZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qxc-sV-w3F"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xn5-FS-AHH">
