@@ -54,6 +54,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/kQ2WZeldsD.gif' title='Launch, Login and pull to refresh' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/asr5WGKKJc.gif' title='Scroll, Un/retweet, Un/favorite and details view' width='' alt='Video Walkthrough' />
 
 GIF created with [Recordit](https://recordit.co/).
 
