@@ -55,6 +55,8 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/kQ2WZeldsD.gif' title='Launch, Login and pull to refresh' width='' alt='Video Walkthrough' />
 <img src='http://g.recordit.co/asr5WGKKJc.gif' title='Scroll, Un/retweet, Un/favorite and details view' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/7F5DT2JKqQ.gif' title='Landscape, small phone, compose tweet' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/q3FcylvKx0.gif' title='Logged out' width='' alt='Video Walkthrough' />
 
 GIF created with [Recordit](https://recordit.co/).
 
