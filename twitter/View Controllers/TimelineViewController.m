@@ -47,7 +47,6 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 125;
     
 }
 
@@ -90,21 +89,9 @@
     cell.retweetButton.selected = tweet.retweeted;
     cell.favoriteButton.selected = tweet.favorited;
     
-    //if favorited show as already favorited at start
-    if(tweet.favorited == YES){
-        [cell.favoriteButton setSelected:YES];
-    }
-    //if retweeted show as already retweeted ast start
-    if(tweet.retweeted == YES){
-        [cell.retweetButton setSelected:YES];
-    }
-    
     //setting profile picture
     if(user.profilePicURL != nil)
         [cell.profilePictureView setImageWithURL:user.profilePicURL];
-    
-    
-    
     
     return cell;
 }
