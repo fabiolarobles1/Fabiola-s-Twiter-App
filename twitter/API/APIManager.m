@@ -40,7 +40,6 @@ static NSString * const consumerSecret = @"4Y4bzA8oUVQICUBeV3Xbj9gQxzfIZhb605JJF
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"]) {
         secret = [[NSUserDefaults standardUserDefaults] stringForKey:@"consumer-secret"];
     }
-    
     self = [super initWithBaseURL:baseURL consumerKey:key consumerSecret:secret];
     if (self) {
         

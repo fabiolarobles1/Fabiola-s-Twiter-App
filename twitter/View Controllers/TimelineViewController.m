@@ -55,6 +55,10 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
+            for (NSDictionary *tweet in tweets){
+                NSLog(@"TWEET: %@" , tweet);
+            }
+            
             self.tweets = [tweets mutableCopy];
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             [self.tableView reloadData];
@@ -77,6 +81,7 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" ];
     Tweet *tweet = self.tweets[indexPath.row];
     User *user = tweet.user;
+    
     
     //adding all the tweet info to the cell
     cell.tweet = tweet;
